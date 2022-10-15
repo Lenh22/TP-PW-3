@@ -49,7 +49,7 @@ main {
 }
 .btn-primary {
     color: #fff;
-    background-color: #1b6ec2;
+    background-color: var(--fondo);
     border-color: #1861ac;
 }
 
@@ -66,11 +66,11 @@ main {
 }
 
 .validation-message {
-    color: red;
+    color: var(--fondo-letra);
 }
 
 #blazor-error-ui {
-    background: lightyellow;
+    background: var(--fondo);
     bottom: 0;
     box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
     display: none;
@@ -91,7 +91,7 @@ main {
 .blazor-error-boundary {
     background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTYiIGhlaWdodD0iNDkiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIG92ZXJmbG93PSJoaWRkZW4iPjxkZWZzPjxjbGlwUGF0aCBpZD0iY2xpcDAiPjxyZWN0IHg9IjIzNSIgeT0iNTEiIHdpZHRoPSI1NiIgaGVpZ2h0PSI0OSIvPjwvY2xpcFBhdGg+PC9kZWZzPjxnIGNsaXAtcGF0aD0idXJsKCNjbGlwMCkiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0yMzUgLTUxKSI+PHBhdGggZD0iTTI2My41MDYgNTFDMjY0LjcxNyA1MSAyNjUuODEzIDUxLjQ4MzcgMjY2LjYwNiA1Mi4yNjU4TDI2Ny4wNTIgNTIuNzk4NyAyNjcuNTM5IDUzLjYyODMgMjkwLjE4NSA5Mi4xODMxIDI5MC41NDUgOTIuNzk1IDI5MC42NTYgOTIuOTk2QzI5MC44NzcgOTMuNTEzIDI5MSA5NC4wODE1IDI5MSA5NC42NzgyIDI5MSA5Ny4wNjUxIDI4OS4wMzggOTkgMjg2LjYxNyA5OUwyNDAuMzgzIDk5QzIzNy45NjMgOTkgMjM2IDk3LjA2NTEgMjM2IDk0LjY3ODIgMjM2IDk0LjM3OTkgMjM2LjAzMSA5NC4wODg2IDIzNi4wODkgOTMuODA3MkwyMzYuMzM4IDkzLjAxNjIgMjM2Ljg1OCA5Mi4xMzE0IDI1OS40NzMgNTMuNjI5NCAyNTkuOTYxIDUyLjc5ODUgMjYwLjQwNyA1Mi4yNjU4QzI2MS4yIDUxLjQ4MzcgMjYyLjI5NiA1MSAyNjMuNTA2IDUxWk0yNjMuNTg2IDY2LjAxODNDMjYwLjczNyA2Ni4wMTgzIDI1OS4zMTMgNjcuMTI0NSAyNTkuMzEzIDY5LjMzNyAyNTkuMzEzIDY5LjYxMDIgMjU5LjMzMiA2OS44NjA4IDI1OS4zNzEgNzAuMDg4N0wyNjEuNzk1IDg0LjAxNjEgMjY1LjM4IDg0LjAxNjEgMjY3LjgyMSA2OS43NDc1QzI2Ny44NiA2OS43MzA5IDI2Ny44NzkgNjkuNTg3NyAyNjcuODc5IDY5LjMxNzkgMjY3Ljg3OSA2Ny4xMTgyIDI2Ni40NDggNjYuMDE4MyAyNjMuNTg2IDY2LjAxODNaTTI2My41NzYgODYuMDU0N0MyNjEuMDQ5IDg2LjA1NDcgMjU5Ljc4NiA4Ny4zMDA1IDI1OS43ODYgODkuNzkyMSAyNTkuNzg2IDkyLjI4MzcgMjYxLjA0OSA5My41Mjk1IDI2My41NzYgOTMuNTI5NSAyNjYuMTE2IDkzLjUyOTUgMjY3LjM4NyA5Mi4yODM3IDI2Ny4zODcgODkuNzkyMSAyNjcuMzg3IDg3LjMwMDUgMjY2LjExNiA4Ni4wNTQ3IDI2My41NzYgODYuMDU0N1oiIGZpbGw9IiNGRkU1MDAiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPjwvZz48L3N2Zz4=) no-repeat 1rem/1.8rem, #b32121;
     padding: 1rem 1rem 1rem 3.7rem;
-    color: white;
+    color:var(--fondo-letra);
 }
 
     .blazor-error-boundary::after {
@@ -522,7 +522,7 @@ Header Style
             font-weight: 400;
             font-size: 14px;
             text-transform: capitalize;
-            color: #666;
+            color: var(--fondo-letra);
             -webkit-transition: all 0.3s ease 0s;
             -moz-transition: all 0.3s ease 0s;
             -o-transition: all 0.3s ease 0s;
@@ -534,7 +534,7 @@ Header Style
         }
 
         .header-area .main-nav .nav li:last-child a {
-            background-color: #27292a;
+            background-color: var(--fondo);
             padding: 8px 10px 8px 20px;
             border-radius: 23px;
         }
@@ -557,13 +557,13 @@ Header Style
 
         .header-area .main-nav .nav li:last-child:hover a,
         .header-area .main-nav .nav li:last-child a.active {
-            color: #fff !important;
+            color: var(--fondo-letra) !important;
             background-color: #e75e8d !important;
         }
 
 .background-header .main-nav .nav li:hover a,
 .background-header .main-nav .nav li a.active {
-    color: #fff;
+    color: var(--fondo-letra);
     opacity: 1;
 }
 
@@ -692,7 +692,7 @@ Header Style
 }
 
     .header-area.header-sticky .nav li a.active {
-        color: #fff;
+        color: var(--fondo-letra);
     }
 
 @media (max-width: 1200px) {
@@ -752,7 +752,7 @@ Header Style
     }
 
     .header-area {
-        background-color: #f7f7f7;
+        background-color: var(--fondo);
         padding: 0px 15px;
         height: 80px;
         box-shadow: none;
@@ -801,7 +801,7 @@ Header Style
 
     .header-area .main-nav .nav li {
         width: 100%;
-        background: #fff;
+        background: var(--fondo);
         border-bottom: 1px solid #eee;
         padding-left: 0px !important;
         padding-right: 0px !important;
@@ -817,7 +817,7 @@ Header Style
         }
 
             .header-area .main-nav .nav li a:hover {
-                background: #fff !important;
+                background: var(--fondo) !important;
                 color: #e75e8d !important;
             }
 
@@ -857,7 +857,7 @@ Header Style
         }
 
         .header-area .main-nav .nav li.has-sub:after {
-            color: #3B566E;
+            color: var(--fondo-letra);
             right: 30px;
             font-size: 14px;
             top: 15px;
@@ -910,12 +910,12 @@ Most Popular Style
 .most-popular {
     margin-top: 60px;
     padding: 30px;
-    background-color: #1f2122;
+    background-color: var(--fondo);
     border-radius: 23px;
 }
 
     .most-popular .item {
-        background-color: #27292a;
+        background-color: var(--fondo);
         padding: 30px 15px;
         border-radius: 23px;
         margin-bottom: 30px;
@@ -940,7 +940,7 @@ Most Popular Style
         }
 
         .most-popular .item span {
-            color: #666;
+            color: var(--fondo-letra);
             display: block;
             margin-top: 7px;
             font-weight: 400;
@@ -953,12 +953,12 @@ Most Popular Style
 
             .most-popular .item ul li {
                 text-align: right;
-                color: #fff;
+                color: var(--fondo-letra);
                 font-size: 14px;
             }
 
                 .most-popular .item ul li:first-child i {
-                    color: yellow;
+                    color: var(--fondo-letra);
                 }
 
                 .most-popular .item ul li:last-child i {
@@ -979,7 +979,7 @@ Gaming Library Style
 .gaming-library {
     margin-top: 60px;
     padding: 30px;
-    background-color: #1f2122;
+    background-color: var(--fondo);
     border-radius: 23px;
 }
 
@@ -1027,7 +1027,7 @@ Gaming Library Style
     }
 
     .gaming-library .item ul li span {
-        color: #666;
+        color: var(--fondo-letra);
         font-size: 14px;
     }
 
@@ -1045,12 +1045,12 @@ Footer Style
 footer p {
     text-align: center;
     padding: 30px 0px;
-    color: #fff;
+    color: var(--fondo-letra);
     font-weight: 300;
 }
 
     footer p a {
-        color: #fff;
+        color: var(--fondo-letra);
         transition: all .3s;
     }
 
@@ -1066,7 +1066,7 @@ Featured Games Style
 
 .featured-games {
     border-radius: 23px;
-    background-color: #1f2122;
+    background-color: var(--fondo);
     padding: 30px;
 }
 
@@ -1092,7 +1092,7 @@ Featured Games Style
         }
 
         .featured-games .item .thumb .hover-effect h6 {
-            background-color: rgba(31,33,34,0.95);
+            background-color: var(--fondo);
             display: inline-block;
             color: #ec6090;
             font-weight: 600;
@@ -1113,7 +1113,7 @@ Featured Games Style
     }
 
     .featured-games .item span {
-        color: #666;
+        color: var(--fondo-letra);
         display: block;
         margin-top: 7px;
         font-weight: 400;
@@ -1126,12 +1126,12 @@ Featured Games Style
 
         .featured-games .item ul li {
             text-align: right;
-            color: #fff;
+            color: var(--fondo-letra);
             font-size: 14px;
         }
 
             .featured-games .item ul li:first-child i {
-                color: yellow;
+                color: var(--fondo-letra);
             }
 
             .featured-games .item ul li:last-child i {
@@ -1157,7 +1157,7 @@ Featured Games Style
             .featured-games .owl-nav .owl-next span {
                 font-size: 36px;
                 display: inline-block;
-                color: #666;
+                color: var(--fondo-letra);
                 opacity: 1;
                 transition: all .3s;
             }
@@ -1170,7 +1170,7 @@ Featured Games Style
 
 .top-downloaded {
     border-radius: 23px;
-    background-color: #1f2122;
+    background-color: var(--fondo);
     padding: 30px;
     max-height: 567px;
     min-height: 567px;
@@ -1194,14 +1194,14 @@ Featured Games Style
 
         .top-downloaded ul li h6 {
             font-size: 15px;
-            color: #666;
+            color: var(--fondo-letra);
             font-weight: 400;
             margin-top: 5px;
             margin-bottom: 5px;
         }
 
         .top-downloaded ul li span {
-            color: #fff;
+            color: var(--fondo-letra);
             font-size: 15px;
             margin-right: 10px;
         }
@@ -1216,7 +1216,7 @@ Featured Games Style
             text-align: center;
             line-height: 46px;
             color: #ec6090;
-            background-color: #27292a;
+            background-color: var(--fondo);
             border-radius: 50%;
         }
 
@@ -1275,7 +1275,7 @@ Live Stream Style
 .live-stream {
     margin-top: 60px;
     border-radius: 23px;
-    background-color: #1f2122;
+    background-color: var(--fondo);
     padding: 30px;
 }
 
@@ -1309,7 +1309,7 @@ Live Stream Style
             background-color: rgba(236, 96, 144, 0.9);
             padding: 5px 10px;
             border-radius: 23px;
-            color: #fff;
+            color: var(--fondo-letra);
             font-size: 14px;
             right: 15px;
             top: 15px;
@@ -1331,7 +1331,7 @@ Live Stream Style
                     background-color: rgba(236, 96, 144, 0.9);
                     padding: 5px 10px;
                     border-radius: 23px;
-                    color: #fff;
+                    color: var(--fondo-letra);
                     font-size: 14px;
                 }
 
@@ -1340,7 +1340,7 @@ Live Stream Style
     }
 
     .live-stream span i {
-        color: #fff;
+        color: var(--fondo-letra);
         background-color: #ec6090;
         border-radius: 50%;
         font-size: 12px;
@@ -1390,7 +1390,7 @@ Featured Banner Style
         transform: translate(-23px, -23px);
         width: 46px;
         height: 46px;
-        background-color: #fff;
+        background-color: var(--fondo);
         border-radius: 50%;
         display: inline-block;
         text-align: center;
@@ -1414,11 +1414,11 @@ Game Details Style
 .game-details .content {
     border-radius: 23px;
     padding: 30px;
-    background-color: #1f2122;
+    background-color: var(--fondo);
 }
 
     .game-details .content .left-info {
-        background-color: #27292a;
+        background-color: var(--fondo);
         border-radius: 23px;
         padding: 30px;
         margin-bottom: 30px;
@@ -1434,7 +1434,7 @@ Game Details Style
         }
 
         .game-details .content .left-info span {
-            color: #666;
+            color: var(--fondo-letra);
             display: block;
             margin-top: 7px;
             font-weight: 400;
@@ -1445,13 +1445,13 @@ Game Details Style
         }
 
             .game-details .content .left-info ul li {
-                color: #fff;
+                color: var(--fondo-letra);
                 font-size: 14px;
                 margin-bottom: 3px;
             }
 
                 .game-details .content .left-info ul li:first-child i {
-                    color: yellow;
+                    color: var(--fondo-letra);
                 }
 
                 .game-details .content .left-info ul li:last-child i {
@@ -1459,7 +1459,7 @@ Game Details Style
                 }
 
     .game-details .content .right-info {
-        background-color: #27292a;
+        background-color: var(--fondo);
         border-radius: 23px;
         padding: 30px;
         margin-bottom: 30px;
@@ -1470,7 +1470,7 @@ Game Details Style
             width: 23%;
             text-align: center;
             font-size: 14px;
-            color: #fff;
+            color: var(--fondo-letra);
         }
 
             .game-details .content .right-info ul li i {
@@ -1479,7 +1479,7 @@ Game Details Style
             }
 
             .game-details .content .right-info ul li:first-child i {
-                color: yellow;
+                color: var(--fondo-letra);
             }
 
             .game-details .content .right-info ul li i {
@@ -1504,7 +1504,7 @@ Other Related Style
 .other-games {
     border-radius: 23px;
     padding: 30px 30px 0px 30px;
-    background-color: #1f2122;
+    background-color: var(--fondo);
     margin-top: 60px;
 }
 
@@ -1528,7 +1528,7 @@ Other Related Style
         }
 
         .other-games .item span {
-            color: #666;
+            color: var(--fondo-letra);
             font-size: 14px;
             display: block;
         }
@@ -1540,13 +1540,13 @@ Other Related Style
     }
 
         .other-games ul li {
-            color: #fff;
+            color: var(--fondo-letra);
             font-size: 14px;
             margin-bottom: 3px;
         }
 
             .other-games ul li:first-child i {
-                color: yellow;
+                color: var(--fondo-letra);
             }
 
             .other-games ul li:last-child i {
@@ -1561,7 +1561,7 @@ Top Streamers Style
 
 .top-streamers {
     border-radius: 23px;
-    background-color: #1f2122;
+    background-color: var(--fondo);
     padding: 30px;
     max-height: 567px;
     min-height: 567px;
@@ -1584,7 +1584,7 @@ Top Streamers Style
         .top-streamers ul li span {
             float: left;
             font-size: 15px;
-            color: #fff;
+            color: #var(var(--fondo-letra));
             font-weight: 700;
             padding-top: 12px;
             margin-right: 10px;
@@ -1598,7 +1598,7 @@ Top Streamers Style
         }
 
             .top-streamers ul li h6 i {
-                color: #fff;
+                color: var(--fondo-letra);
                 background-color: #ec6090;
                 border-radius: 50%;
                 font-size: 12px;
@@ -1627,12 +1627,12 @@ Profile Style
 .main-profile {
     border-radius: 23px;
     padding: 30px;
-    background-color: #1f2122;
+    background-color: var(-fondo);
 }
 
     .main-profile .main-info span {
         font-size: 14px;
-        color: #fff;
+        color: var(--fondo-letra);
         background-color: #e75e8d;
         padding: 8px 20px;
         display: inline-block;
@@ -1654,13 +1654,13 @@ Profile Style
     .main-profile ul {
         border-radius: 23px;
         padding: 30px;
-        background-color: #27292a;
+        background-color: var(--fondo);
     }
 
         .main-profile ul li {
             width: 100%;
             font-size: 14px;
-            color: #666;
+            color: var(--fondo-letra);
             margin-bottom: 20px;
             padding-bottom: 20px;
             border-bottom: 1px solid #666;
@@ -1690,7 +1690,7 @@ Profile Style
     .clips .item {
         border-radius: 23px;
         padding: 30px 15px;
-        background-color: #27292a;
+        background-color: var(--fondo);
         margin-bottom: 30px;
     }
 
@@ -1706,7 +1706,7 @@ Profile Style
                 transform: translate(-23px, -23px);
                 width: 46px;
                 height: 46px;
-                background-color: #fff;
+                background-color: var(--fondo);
                 border-radius: 50%;
                 display: inline-block;
                 text-align: center;
@@ -1725,7 +1725,7 @@ Profile Style
 
         .clips .item span {
             float: right;
-            color: #fff;
+            color: var(--fondo-letra);
             font-size: 14px;
         }
 
