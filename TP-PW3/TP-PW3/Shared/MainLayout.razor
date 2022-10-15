@@ -10,13 +10,19 @@
 
     <main>
         <div class="top-row px-4">
-        <select @onchange="CambiarTema" class="ms-1">
-            @foreach (var modo in modos)
-            {
-                <option selected="@EsSeleccionado(modo)" value="@modo">@modo</option>
-            }
-        </select>
-            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
+            <div class="search-input">
+                <form id="search" action="#">
+                    <input type="text" placeholder="Type Something" id='searchText' name="searchKeyword" onkeypress="handle" />
+                    <i class="fa fa-search"></i>
+                </form>
+            </div>
+            <select @onchange="CambiarTema" class="ms-1">
+
+                @foreach (var modo in modos)
+                {
+                    <option selected="@EsSeleccionado(modo)" value="@modo">@modo</option>
+                }
+            </select>
         </div>
 
         <article class="content px-4">
@@ -24,6 +30,8 @@
         </article>
     </main>
 
+
+    @*--------------Codigo---------------*@
     @code {
         private string modoSeleccionado = "Luz";
         private List<string> modos = new List<string>() { "Luz", "Oscuridad" };
