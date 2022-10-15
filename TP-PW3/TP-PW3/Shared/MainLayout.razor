@@ -1,14 +1,21 @@
 ﻿@inherits LayoutComponentBase
+@inject IJSRuntime js
 
 <PageTitle>TP-PW3</PageTitle>
 
-<div class="page">
+<div class="page @ObtenerClase()">
     <div class="sidebar">
         <NavMenu />
     </div>
 
     <main>
         <div class="top-row px-4">
+        <select @onchange="CambiarTema" class="ms-1">
+            @foreach (var modo in modos)
+            {
+                <option selected="@EsSeleccionado(modo)" value="@modo">@modo</option>
+            }
+        </select>
             <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
         </div>
 
@@ -16,4 +23,44 @@
             @Body
         </article>
     </main>
+
+    @code {
+        private string modoSeleccionado = "Luz";
+        private List<string> modos = new List<string>() { "Luz", "Oscuridad" };
+        private readonly string llaveTema = "tema";
+
+        protected override async Task OnAfterRenderAsync(bool firstRender)
+        {
+            if (firstRender)
+            {
+                var modoLocalStorage = await js.InvokeAsync<string>("leerLocalStorage", llaveTema);
+                if (!string.IsNullOrEmpty(modoSeleccionado))
+                {
+                    modoSeleccionado = modoLocalStorage;
+                    StateHasChanged(); //avisa cambios
+                }
+            }
+        }
+
+        private string ObtenerClase()
+        {
+            if (modoSeleccionado == "Luz")
+            {
+                return string.Empty;
+            }
+            else
+            {
+                return "modo-oscuro";
+            }
+        }
+
+        private bool EsSeleccionado(string modo) => modo == modoSeleccionado;
+
+        private async Task CambiarTema(ChangeEventArgs e)
+        {
+            modoSeleccionado = e.Value.ToString();
+            await js.InvokeVoidAsync("agregarLocalStorage", llaveTema, modoSeleccionado);
+        }
+    }
+
 </div>

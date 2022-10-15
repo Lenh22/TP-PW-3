@@ -28,5 +28,9 @@
     </div>
 
     <script src="_framework/blazor.server.js"></script>
+    <script>
+        function agregarLocalStorage(llave, valor) { localStorage[llave] = valor; }
+        function leerLocalStorage(llave) { return localStorage[llave]; }
+    </script>
 </body>
 </html>
