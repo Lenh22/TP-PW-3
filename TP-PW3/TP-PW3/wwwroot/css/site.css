@@ -1584,7 +1584,7 @@ Top Streamers Style
         .top-streamers ul li span {
             float: left;
             font-size: 15px;
-            color: #var(var(--fondo-letra));
+            color: var(var(--fondo-letra));
             font-weight: 700;
             padding-top: 12px;
             margin-right: 10px;
