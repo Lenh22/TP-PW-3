@@ -1380,7 +1380,7 @@ Featured Banner Style
     max-height: 305px;
     overflow: hidden;
     border-radius: 23px;
-    ;
+    
 }
 
     .feature-banner .thumb a {
@@ -1584,7 +1584,7 @@ Top Streamers Style
         .top-streamers ul li span {
             float: left;
             font-size: 15px;
-            color: var(var(--fondo-letra));
+            color: var(--fondo-letra);
             font-weight: 700;
             padding-top: 12px;
             margin-right: 10px;
@@ -1627,7 +1627,7 @@ Profile Style
 .main-profile {
     border-radius: 23px;
     padding: 30px;
-    background-color: var(-fondo);
+    background-color: var(--fondo);
 }
 
     .main-profile .main-info span {
@@ -1680,7 +1680,7 @@ Profile Style
 
 .clips {
     margin-top: 30px;
-    border-top: 2px solid #27292a;
+    border-top: 2px solid var(--fondo-borde);
 }
 
     .clips .heading-section {
@@ -1711,7 +1711,7 @@ Profile Style
                 display: inline-block;
                 text-align: center;
                 line-height: 46px;
-                color: #ec6090;
+                color: var(--link);
             }
 
         .clips .item h4 {
