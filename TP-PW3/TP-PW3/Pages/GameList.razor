@@ -1,0 +1,63 @@
+﻿@page "/"
+@inject IGameService GameService
+
+<h1>Juegos</h1>
+
+@Mensaje
+
+<div>
+    <a href="/gameDetails"><i>Agregar nuevo juego</i></a>
+</div>
+
+@if (games == null)
+{
+    <p><em>Loading...</em></p>
+}else if(games.Count() <= 0){
+    <p>No hay juegos</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Categoria</th>
+                <th>Descripcion</th>
+                <th>Precio</th>
+                <th colspan="2">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var game in games)
+            {
+                <tr>
+                    <td>@game.Nombre</td>
+                    <td>@game.Categoria</td>
+                    <td>@game.Descripcion</td>
+                    <td>@game.Precio</td>
+                    <td><a href="/gameDetails/@game.GameId" class="btn btn-primary"><i>Editar</i></a></td>
+                    <td><a href="/gameDelete/@game.GameId" class="btn btn-primary"><i>Eliminar</i></a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    public IEnumerable<Game> games { get; set; }
+    public string Mensaje { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            games = await GameService.GetAllGames();
+
+        }
+        catch (Exception e)
+        {
+            Mensaje = e.Message;
+        }
+    }
+
+}

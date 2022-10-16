@@ -1,0 +1,62 @@
+﻿@page "/gameDetails"
+@page "/gameDetails/{id:int}"
+@inject IGameService GameService
+@inject NavigationManager NavigationManager
+
+<h1>Detalle del juego</h1>
+
+<EditForm Model="@game">
+    <table class="table table-striped ">
+        <tr>
+            <td>Nombre: </td>
+            <td><input class="form-control col-sm-4" type="text" @bind="game.Nombre" /></td>
+        </tr>
+        <tr>
+            <td>Descripcion: </td>
+            <td><input class="form-control col-sm-4" type="text" @bind="game.Descripcion" /></td>
+        </tr>
+        <tr>
+            <td>Categoria</td>
+            <td><select class="form-control col-sm-4" @bind="game.Categoria">
+                <option value="Accion" selected>Acción</option>
+                <option value="Terror">Terror</option>
+                <option value="Online">Online</option>
+            </select></td>
+        </tr>
+        <tr>
+            <td>Precio: </td>
+            <td><input class="form-control col-sm-4" type="number" @bind="game.Precio" /></td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align:center">
+                <input type="submit" value="Guardar" @onclick="SaveGame" />
+                <input type="button" value="Cancelar" @onclick="Cancel" />
+            </td>
+        </tr>
+    </table>
+</EditForm>
+
+@code {
+    [Parameter]
+    public int id { get; set; }
+    private Game game = new Game();
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (id != 0)
+        {
+            game = await GameService.GetGameDetails(id);
+        }
+    }
+
+    protected async Task SaveGame()
+    {
+        await GameService.SaveGame(game);
+        NavigationManager.NavigateTo("/");
+    }
+
+    protected void Cancel()
+    {
+        NavigationManager.NavigateTo("/");
+    }
+}

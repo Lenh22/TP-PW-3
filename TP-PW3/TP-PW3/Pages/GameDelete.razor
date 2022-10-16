@@ -1,0 +1,69 @@
+﻿@page "/gameDelete/{id:int}"
+@inject IGameService GameService
+@inject NavigationManager NavigationManager
+
+<h1>Eliminar juego</h1>
+
+<p style="color: red; text-align:center">
+   ¿Está seguro que desea eliminar este juego?
+</p>
+
+
+
+<EditForm Model="@game">
+    <table class="table table-striped ">
+        <tr>
+            <td>Nombre: </td>
+            <td><input class="form-control col-sm-4" type="text" @bind="game.Nombre" /></td>
+        </tr>
+        <tr>
+            <td>Descripcion: </td>
+            <td><input class="form-control col-sm-4" type="text" @bind="game.Descripcion" /></td>
+        </tr>
+        <tr>
+            <td>Categoria</td>
+            <td>
+                <select class="form-control col-sm-4" @bind="game.Categoria">
+                    <option selected>Acción</option>
+                    <option>Terror</option>
+                    <option>Online</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Precio: </td>
+            <td><input class="form-control col-sm-4" type="number" @bind="game.Precio" /></td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align:center">
+                <input type="submit" value="Eliminar" @onclick="DeleteGame" />
+                <input type="button" value="Cancelar" @onclick="Cancel" />
+            </td>
+        </tr>
+    </table>
+</EditForm>
+
+@code {
+    [Parameter]
+    public int id { get; set; }
+    private Game game = new Game();
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (id != 0)
+        {
+            game = await GameService.GetGameDetails(id);
+        }
+    }
+
+    protected async Task DeleteGame()
+    {
+        await GameService.DeleteGame(id);
+        NavigationManager.NavigateTo("/");
+    }
+
+    protected void Cancel()
+    {
+        NavigationManager.NavigateTo("/");
+    }
+}
