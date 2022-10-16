@@ -16,13 +16,25 @@
                     <i class="fa fa-search"></i>
                 </form>
             </div>
-            <select @onchange="CambiarTema" class="ms-1">
+            <select @onchange="CambiarTema" class="ms-1 form-select form-select-sm" aria-label="Seleccione">
 
                 @foreach (var modo in modos)
                 {
-                    <option selected="@EsSeleccionado(modo)" value="@modo">@modo</option>
+                    <option selected="@EsSeleccionado(modo)" value="@modo">
+                        @if (modo == "Luz")
+                        {
+                            <span class="oi oi-sun" aria-hidden="true"></span>
+                            @modo
+                        }
+                        else
+                        {
+                            <span class="oi oi-moon" aria-hidden="true"></span>
+                            @modo
+                        }
+                    </option>
                 }
             </select>
+
         </div>
 
         <article class="content px-4">
