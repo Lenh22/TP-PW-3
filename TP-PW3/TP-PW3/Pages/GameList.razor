@@ -1,12 +1,44 @@
 ﻿@page "/"
 @inject IGameService GameService
 
-<h1>Juegos</h1>
 
 @Mensaje
 
-<div>
-    <a href="/gameDetails"><i>Agregar nuevo juego</i></a>
+<div class="row mb-5">
+    <div class="col-9">
+        <h1>Juegos</h1>
+    </div>
+    <div class="col-3">
+        <a href="/gameDetails" class="btn btn-success">Agregar nuevo juego</a>
+    </div>
+</div>
+
+<br />
+<br />
+<h2>Filtros</h2>
+<div class="row mt-5">
+    <div class="col-3">
+        <label for="Nombre">Nombre: </label>
+        <input type="text" @oninput="@ChangeFilterName" class="form-control" placeholder="Buscar juego por nombre" />
+    </div>
+    <div class="col-3">
+       <label for="Categoria">Categoria: </label>
+        <select class="form-control col-sm-4" @onchange="@ChangeFilterCategory">
+            <option value="" selected>-Seleccione-</option>
+                <option value="Accion">Acción</option>
+                <option value="Terror">Terror</option>
+                <option value="Online">Online</option>
+        </select>
+    </div>
+    <div class="col-3">
+        <label for="Precio">Precio: </label>
+        <select class="form-control col-sm-4" @onchange="@ChangeFilterPrice">
+            <option value="0" selected>-Seleccione-</option>
+            <option value="2000">Más de 2000</option>
+            <option value="3000">Más de 3000</option>
+            <option value="4000">Más de 4000</option>
+        </select>
+    </div>
 </div>
 
 @if (games == null)
@@ -35,8 +67,8 @@ else
                     <td>@game.Categoria</td>
                     <td>@game.Descripcion</td>
                     <td>@game.Precio</td>
-                    <td><a href="/gameDetails/@game.GameId" class="btn btn-primary"><i>Editar</i></a></td>
-                    <td><a href="/gameDelete/@game.GameId" class="btn btn-primary"><i>Eliminar</i></a></td>
+                    <td><a href="/gameDetails/@game.GameId" class="btn btn-warning"><i>Editar</i></a></td>
+                    <td><a href="/gameDelete/@game.GameId" class="btn btn-danger"><i>Eliminar</i></a></td>
                 </tr>
             }
         </tbody>
@@ -46,18 +78,42 @@ else
 @code {
     public IEnumerable<Game> games { get; set; }
     public string Mensaje { get; set; }
+    public string nameFilter { get; set; } = "";
+    public string categoryFilter { get; set; } = "";
+    public string priceFilter { get; set; } = "0";
 
     protected override async Task OnInitializedAsync()
     {
         try
         {
             games = await GameService.GetAllGames();
-
         }
         catch (Exception e)
         {
             Mensaje = e.Message;
         }
+    }
+
+    protected async Task ChangeFilterPrice(Microsoft.AspNetCore.Components.ChangeEventArgs args)
+    {
+        priceFilter = (string)args.Value;
+        await searchFilters();
+    }
+
+    protected async Task ChangeFilterCategory(Microsoft.AspNetCore.Components.ChangeEventArgs args)
+    {
+        categoryFilter = (string)args.Value;
+        await searchFilters();
+    }
+
+    protected async Task ChangeFilterName(Microsoft.AspNetCore.Components.ChangeEventArgs args)
+    {
+        nameFilter = (string)args.Value;
+        await searchFilters();
+    }
+
+    protected async Task searchFilters(){
+        games = await GameService.FindGameByFilters(nameFilter,categoryFilter,priceFilter);
     }
 
 }
