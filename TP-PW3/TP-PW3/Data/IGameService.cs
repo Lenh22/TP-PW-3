@@ -13,6 +13,8 @@ namespace TP_PW3.Data
 
         Task<bool> SaveGame(Game game);
 
+        Task<IEnumerable<Game>> FindGameByFilters(string nombre, string categoria, string precio);
+
     }
 
     public class GameService : IGameService
@@ -31,6 +33,14 @@ namespace TP_PW3.Data
             MyBooksContext.Games.Remove(GameFind);
 
             return await MyBooksContext.SaveChangesAsync() > 0;
+        }
+
+        public async Task<IEnumerable<Game>> FindGameByFilters(string nombre,string categoria,string precio)
+        {
+            return await MyBooksContext.Games.Where(g => EF.Functions.Like(g.Nombre, '%' + nombre + '%'))
+                                             .Where(g=>EF.Functions.Like(g.Categoria, '%' + categoria + '%'))
+                                             .Where(g=> g.Precio >= Double.Parse(precio))
+                                             .ToListAsync();
         }
 
         public async Task<IEnumerable<Game>> GetAllGames()
@@ -64,7 +74,7 @@ namespace TP_PW3.Data
 
         public async Task<bool> UpdateGame(Game game)
         {
-            MyBooksContext.Entry(game).State = EntityState.Modified; ;
+            MyBooksContext.Entry(game).State = EntityState.Modified;
 
             return await MyBooksContext.SaveChangesAsync() > 0;
         }
