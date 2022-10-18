@@ -1,3 +1,27 @@
+:root {
+    --fondo: white;
+    --fondo-letra: black;
+    --fondo-letra-hover: rgb(105, 19, 19);
+    --fondo-letra-2: rgb(58, 58, 58);
+    --fondo-borde: rgb(51, 51, 51);
+    --fondo-resaltado: #f7f7f7;
+    --fondo-resaltado-2: #e2e3e5;
+    --fondo-degrades-1: linear-gradient(180deg, rgb(185 133 176) 0%, #a95497 70%);
+    --link: #0554ae;
+}
+
+.modo-oscuro {
+    --fondo: #2d2d2d;
+    --fondo-letra: white;
+    --fondo-letra-hover: rgb(212, 73, 73);
+    --fondo-letra-2: rgb(161, 161, 161);
+    --fondo-borde: rgb(212, 212, 212);
+    --fondo-resaltado: #393939;
+    --fondo-resaltado-2: #414648;
+    --fondo-degrades-1: linear-gradient(180deg, rgb(121 82 114) 0%, #391932 70%);
+    --link: #3ca4ff;
+}
+
 .page {
     position: relative;
     display: flex;
@@ -9,7 +33,7 @@ main {
 }
 
 .sidebar {
-    background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
+    background-image: linear-gradient(180deg, rgb(0 0 0) 0%, #81306f 70%);
 }
 
 .top-row {

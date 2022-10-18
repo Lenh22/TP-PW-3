@@ -4,30 +4,28 @@
 
 @Mensaje
 
-<div class="row mb-5">
+@*<div class="row mb-5">
     <div class="col-9">
         <h1>Juegos</h1>
     </div>
     <div class="col-3">
         <a href="/gameDetails" class="btn btn-success">Agregar nuevo juego</a>
     </div>
-</div>
+</div>*@
 
-<br />
-<br />
-<h2>Filtros</h2>
+@*<h2>Filtros</h2>
 <div class="row mt-5">
     <div class="col-3">
         <label for="Nombre">Nombre: </label>
         <input type="text" @oninput="@ChangeFilterName" class="form-control" placeholder="Buscar juego por nombre" />
     </div>
     <div class="col-3">
-       <label for="Categoria">Categoria: </label>
+        <label for="Categoria">Categoria: </label>
         <select class="form-control col-sm-4" @onchange="@ChangeFilterCategory">
             <option value="" selected>-Seleccione-</option>
-                <option value="Accion">Acción</option>
-                <option value="Terror">Terror</option>
-                <option value="Online">Online</option>
+            <option value="Accion">Acción</option>
+            <option value="Terror">Terror</option>
+            <option value="Online">Online</option>
         </select>
     </div>
     <div class="col-3">
@@ -39,12 +37,111 @@
             <option value="4000">Más de 4000</option>
         </select>
     </div>
+</div>*@
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="page-content">
+                <!-- ***** Banner Inicio ***** -->
+                <div class="main-banner">
+                    <div class="row">
+                        <div class="col-lg-7">
+                            <div class="header-text">
+                                <h6>Bienvenido</h6>
+                                <h4><em>Agrega</em> Tu juego preferido</h4>
+                                <div class="main-button">
+                                    <a href="/gameDetails" class="">Agrega tu juego</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ***** Banner Fin ***** -->
+                <!-- ***** Filtros inicio *****-->
+                <h5 class="mt-2">Filtros</h5>
+                <div class="row mt-3 d-flex justify-content-between">
+                    <div class="col">
+                        <label for="Nombre">Nombre: </label>
+                        <input type="text" @oninput="@ChangeFilterName" class="form-control" placeholder="Buscar juego por nombre" />
+                    </div>
+                    <div class="col">
+                        <label for="Categoria">Categoria: </label>
+                        <select class="form-control col-sm-4" @onchange="@ChangeFilterCategory">
+                            <option value="" selected>-Seleccione-</option>
+                            <option value="Accion">Acción</option>
+                            <option value="Terror">Terror</option>
+                            <option value="Online">Online</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label for="Precio">Precio: </label>
+                        <select class="form-control col-sm-4" @onchange="@ChangeFilterPrice">
+                            <option value="0" selected>-Seleccione-</option>
+                            <option value="2000">Más de 2000</option>
+                            <option value="3000">Más de 3000</option>
+                            <option value="4000">Más de 4000</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- ***** Filtros Fin *****-->
+                @if (games == null)
+                {
+                    <p class="m-4"><em>Loading...</em></p>
+                }
+                else if (games.Count() <= 0)
+                {
+                    <h6 class="text-center m-5">No hay juegos</h6>
+                }
+                else
+                {
+
+                    <!-- ***** Lista juegos inicio ***** -->
+                    <div class="gaming-library">
+                        <div class="col-lg-12">
+                            <div class="heading-section">
+                                <h4>La <em>Libreria</em></h4>
+                            </div>
+                            @foreach (var game in games)
+                            {
+                                <div class="item">
+                                    <ul>
+                                        <li><img src="images/game-03.jpg" alt="" class="templatemo-item"></li>
+                                        <li><h4>@game.Nombre</h4><span>Nombre</span></li>
+                                        <li><h4>@game.Categoria</h4><span>Categoria</span></li>
+                                        <li><h4>@game.Descripcion</h4><span>Descripcion</span></li>
+                                        <li><h4>@game.Precio</h4><span>Precio</span></li>
+                                        <div class="text-center d-flex justify-content-center">
+                                        <div class="main-border-button"><a href="/gameDetails/@game.GameId">Editar</a></div>
+                                        <div class="main-border-button"><a href="/gameDelete/@game.GameId">Eliminar</a></div>
+                                        </div>
+                                </ul>
+                            </div>
+                            }
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="main-button">
+                            <a href="#">Ver libreria</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- ***** Lista juegos Fin ***** -->
+                }
+        </div>
+    </div>
+</div>
 </div>
 
-@if (games == null)
+
+
+
+
+@*@if (games == null)
 {
     <p><em>Loading...</em></p>
-}else if(games.Count() <= 0){
+}
+else if (games.Count() <= 0)
+{
     <p>No hay juegos</p>
 }
 else
@@ -74,6 +171,9 @@ else
         </tbody>
     </table>
 }
+*@
+
+@*---------CODIGO----------*@
 
 @code {
     public IEnumerable<Game> games { get; set; }
@@ -112,8 +212,9 @@ else
         await searchFilters();
     }
 
-    protected async Task searchFilters(){
-        games = await GameService.FindGameByFilters(nameFilter,categoryFilter,priceFilter);
+    protected async Task searchFilters()
+    {
+        games = await GameService.FindGameByFilters(nameFilter, categoryFilter, priceFilter);
     }
 
 }

@@ -17,11 +17,13 @@
         </tr>
         <tr>
             <td>Categoria</td>
-            <td><select class="form-control col-sm-4" @bind="game.Categoria">
-                <option value="Accion" selected>Acción</option>
-                <option value="Terror">Terror</option>
-                <option value="Online">Online</option>
-            </select></td>
+            <td>
+                <select class="form-control col-sm-4" @bind="game.Categoria">
+                    <option value="Accion" selected>Acción</option>
+                    <option value="Terror">Terror</option>
+                    <option value="Online">Online</option>
+                </select>
+            </td>
         </tr>
         <tr>
             <td>Precio: </td>
@@ -36,6 +38,10 @@
     </table>
 </EditForm>
 
+
+
+
+@*---------Codigo----------*@
 @code {
     [Parameter]
     public int id { get; set; }

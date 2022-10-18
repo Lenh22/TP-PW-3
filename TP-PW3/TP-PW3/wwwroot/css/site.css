@@ -245,7 +245,7 @@ p {
 }
 
     .main-button a:hover {
-        background-color: var(--fondo);
+        background-color: var(--fondo-letra);
         color: #e75e8d;
     }
 
@@ -298,6 +298,16 @@ section {
         font-style: normal;
         text-decoration: underline;
     }
+.form-control {
+    background-color: aliceblue;
+    border: 2px solid var(--fondo-letra)
+}
+    .form-control:focus {
+        background-color: rgb(212, 212, 212);
+        border: 2px solid var(--fondo-letra);
+        border-color: var(--fondo-letra-hover);
+        box-shadow: 0 0 0 0.25rem rgb(254 34 255 / 25%);
+    }
 
 /* 
 ---------------------------------------------
@@ -305,7 +315,7 @@ Pre-loader Style
 --------------------------------------------- 
 */
 
-.js-preloader {
+        .js-preloader {
     position: fixed;
     top: 0;
     left: 0;
@@ -979,12 +989,12 @@ Gaming Library Style
 .gaming-library {
     margin-top: 60px;
     padding: 30px;
-    background-color: #1f2122;
+    background-color: var(--fondo);
     border-radius: 23px;
 }
 
     .gaming-library .item {
-        border-bottom: 1px solid #27292a;
+        border-bottom: 1px solid var(--fondo-borde);
         margin-bottom: 20px;
         padding-bottom: 20px;
     }
@@ -1856,4 +1866,5 @@ body {
     .gaming-library .item ul li {
         width: 16%;
     }
+
 }

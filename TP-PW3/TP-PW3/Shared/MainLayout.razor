@@ -10,12 +10,7 @@
 
     <main>
         <div class="top-row px-4">
-            <div class="search-input">
-                <form id="search" action="#">
-                    <input type="text" placeholder="Type Something" id='searchText' name="searchKeyword" onkeypress="handle" />
-                    <i class="fa fa-search"></i>
-                </form>
-            </div>
+            
             <select @onchange="CambiarTema" class="ms-1">
 
                 @foreach (var modo in modos)
