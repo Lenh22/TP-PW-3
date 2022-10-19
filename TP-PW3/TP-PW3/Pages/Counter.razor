@@ -2,13 +2,22 @@
 
 <PageTitle>Counter</PageTitle>
 
-<h1>Counter</h1>
+<h4> @cadena {</h4>
 
-<p role="status">Current count: @currentCount</p>
+<p role="status" class="ms-2">private string currentCount = <strong>@currentCount</strong></p>
+<p role="status" class="ms-4">
+    <br />
+    private void IncrementCount()
+    {
+</p>
+<br/>
 
-<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
-
+<button class="btn btn-primary" style="margin-left:6em" @onclick="IncrementCount">currentCount++</button>
+<p role="status" class="mx-4">   }</p>
+<br />
+<h4>}</h4>
 @code {
+    private string cadena = "@code";
     private int currentCount = 0;
 
     private void IncrementCount()

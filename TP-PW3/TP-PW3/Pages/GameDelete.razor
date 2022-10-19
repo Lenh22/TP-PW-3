@@ -4,44 +4,57 @@
 
 <h1>Eliminar juego</h1>
 
-<p style="color: red; text-align:center">
-   ¿Está seguro que desea eliminar este juego?
-</p>
-
-
-
-<EditForm Model="@game">
-    <table class="table table-striped ">
-        <tr>
-            <td>Nombre: </td>
-            <td><input class="form-control col-sm-4" type="text" @bind="game.Nombre" /></td>
-        </tr>
-        <tr>
-            <td>Descripcion: </td>
-            <td><input class="form-control col-sm-4" type="text" @bind="game.Descripcion" /></td>
-        </tr>
-        <tr>
-            <td>Categoria</td>
-            <td>
-                <select class="form-control col-sm-4" @bind="game.Categoria">
-                    <option selected>Acción</option>
-                    <option>Terror</option>
-                    <option>Online</option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td>Precio: </td>
-            <td><input class="form-control col-sm-4" type="number" @bind="game.Precio" /></td>
-        </tr>
-        <tr>
-            <td colspan="2" style="text-align:center">
-                <input type="submit" value="Eliminar" @onclick="DeleteGame" />
-                <input type="button" value="Cancelar" @onclick="Cancel" />
-            </td>
-        </tr>
-    </table>
-</EditForm>
+<div class="page-content mb-2">
+    <h6 class="text-center text-danger">
+        ¿Está seguro que desea eliminar este juego?
+    </h6>
+</div>
+ <div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="page-content mb-2">
+                <!-- ***** Banner Inicio ***** -->
+                <div class="">
+                    <div class="row">
+                        <!-- **** Form inicio **** -->
+            <EditForm Model="@game">
+            <!-- ***** Juego Inicio ***** -->
+                    <div class="gaming-library">
+                        <div class="col-lg-12">
+                            <div class="heading-section">
+                                <h4>La <em>Libreria</em></h4>
+                            </div
+                                <div class="item">
+                                    <ul>
+                                        <li><img src="images/game-03.jpg" alt="" class="templatemo-item"></li>
+                                        <li><h4>@game.Nombre</h4><span>Nombre</span></li>
+                                        <li><h4>@game.Categoria</h4><span>Categoria</span></li>
+                                        <li><h4>@game.Descripcion</h4><span>Descripcion</span></li>
+                                        <li><h4>@game.Precio</h4><span>Precio</span></li>
+                                                                   <!-- **** Botones inicio ****-->
+                            <div class="text-center d-flex justify-content-center mt-1" colspan="2">
+                                <div class="main-border-button m-2">
+                                    <input class="btn btn-dark" type="submit" value="Eliminar" @onclick="DeleteGame" />
+                                </div>
+                                <div class="main-border-button m-2">
+                                    <input class="btn btn-danger" type="button" value="Cancelar" @onclick="Cancel" />
+                                </div>
+                            </div>
+                            <!-- ****  Botones Fin **** -->
+                                </ul>
+                            </div>
+                            </div>
+                    </div>
+                <!-- **** Juego Fin **** -->
+                    </EditForm>
+                        <!-- **** Form Fin **** -->
+                    </div>
+                </div>
+                <!-- ***** Banner Fin ***** -->
+            </div>
+        </div>
+    </div>
+</div>
 
 @code {
     [Parameter]

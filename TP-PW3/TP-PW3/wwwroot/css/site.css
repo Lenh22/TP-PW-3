@@ -6,7 +6,7 @@
     --fondo-letra-hover: rgb(105, 19, 19);
     --fondo-letra-2: rgb(58, 58, 58);
     --fondo-borde: rgb(51, 51, 51);
-    --fondo-resaltado: #f7f7f7;
+    --fondo-resaltado: #ededed;
     --fondo-resaltado-2: #e2e3e5;
     --link: #0554ae;
 }
@@ -201,7 +201,8 @@ body {
 }
 
     body .page-content {
-        margin-top: 110px;
+        margin-top: 2em;
+        margin-bottom: 2em;
         background-color: var(--fondo-resaltado);
         padding: 60px;
         border-radius: 23px;

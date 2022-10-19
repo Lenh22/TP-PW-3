@@ -9,15 +9,20 @@
     </div>
 
     <main>
-        <div class="top-row px-4">
-            
-            <select @onchange="CambiarTema" class="ms-1">
+        <div class="top-row px-4 d-flex flex-row justify-content-end">
+            <div class="">
+                <span class="oi @className mx-2" aria-hidden="true"></span>
+            </div>
+            <div class="col-1">
+            <select @onchange="CambiarTema" class="form-select form-select-sm">
 
                 @foreach (var modo in modos)
                 {
                     <option selected="@EsSeleccionado(modo)" value="@modo">@modo</option>
                 }
             </select>
+            </div>
+
         </div>
 
         <article class="content px-4">
@@ -31,6 +36,7 @@
         private string modoSeleccionado = "Luz";
         private List<string> modos = new List<string>() { "Luz", "Oscuridad" };
         private readonly string llaveTema = "tema";
+        private string className = "";
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
@@ -49,10 +55,12 @@
         {
             if (modoSeleccionado == "Luz")
             {
+                className = "oi-sun";
                 return string.Empty;
             }
             else
             {
+                className = "oi-moon";
                 return "modo-oscuro";
             }
         }
