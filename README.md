@@ -15,7 +15,7 @@ Hay implementaciones como por ejemplo:
 - Filtrador
 - Peticiones HTTP
 
-_Participantes:
+_Participantes:_
 - Leandro Alonso : https://github.com/Lenh22
 - Joel Escobar : https://github.com/JoelE7
 - Diego Arredondo : https://github.com/Diego2985
