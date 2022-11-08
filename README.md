@@ -1,5 +1,6 @@
 # Blazor
-**Proyecto Integrador de Programacion Web 3 **
+**Proyecto Integrador de Programacion Web 3**
+
 Esta parte contiene el **Front-End** como el **Back-End** del proyecto
 - Visual Studio 2022
 - Contiene C#
