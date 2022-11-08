@@ -12,4 +12,5 @@ _Centrado en Blazor Server Side_
 Hay implementaciones como por ejemplo:
 - Cambio dinamico de Modo Oscuro/Luz
 - CRUD (Create, Read, Update, Delete)
+- Filtrador
 - Peticiones HTTP
