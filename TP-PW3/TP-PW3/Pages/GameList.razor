@@ -1,6 +1,9 @@
 ﻿@page "/"
 @inject IGameService GameService
+@using System.Net.Http.Json
+@inject ProtectedLocalStorage localStore
 
+@inject HttpClient Http
 
 @Mensaje
 
@@ -100,12 +103,18 @@
 @*---------CODIGO----------*@
 
 @code {
+
+
     public IEnumerable<Game> games { get; set; }
     public string Mensaje { get; set; }
 
     public string nameFilter { get; set; } = "";
     public string categoryFilter { get; set; } = "";
     public string priceFilter { get; set; } = "0";
+    public string Message { get; set; } = "";
+    public string Token { get; set; } = "";
+    public DateTime DateToken { get; set; }
+
 
     protected override async Task OnInitializedAsync()
     {
@@ -117,6 +126,7 @@
         {
             Mensaje = e.Message;
         }
+       await GetJWT();
     }
 
     protected async Task ChangeFilterPrice(Microsoft.AspNetCore.Components.ChangeEventArgs args)
@@ -142,4 +152,43 @@
         games = await GameService.FindGameByFilters(nameFilter, categoryFilter, priceFilter);
     }
 
+    protected async Task<string> GetJWT()
+    {
+        try
+        {
+            var tokenStorage = await localStore.GetAsync<string>("token");
+            var fechaStorage = await localStore.GetAsync<DateTime>("fecha");
+
+            if (fechaStorage.Success)
+            {
+                DateToken = fechaStorage.Value;
+                if (DateTime.Compare(DateToken, DateTime.UtcNow) <= 0)
+                {
+                    await localStore.DeleteAsync("token");
+                    await localStore.DeleteAsync("fecha");
+                }
+            }
+            if (tokenStorage.Success)
+            {
+                Token = tokenStorage.Value;
+            }
+            else
+            {
+                Message = "No estás autorizado capo";
+            }
+        }
+        catch (Exception e)
+        {
+            Message = "No estás autorizado capo";
+        }
+        return Token;
+    }
+
+
+
 }
+
+
+
+
+

@@ -47,6 +47,7 @@ main {
     background-color: var(--fondo);
     color: var(--fondo-letra);
 }
+
 .btn-primary {
     color: #fff;
     background-color: #1b6ec2;
@@ -208,6 +209,10 @@ body {
         border-radius: 23px;
     }
 
+.bg-dark {
+
+}
+
 p {
     font-size: 15px;
     color: var(--fondo-letra-2);
@@ -299,10 +304,12 @@ section {
         font-style: normal;
         text-decoration: underline;
     }
+
 .form-control {
     background-color: aliceblue;
     border: 2px solid var(--fondo-letra)
 }
+
     .form-control:focus {
         background-color: rgb(212, 212, 212);
         border: 2px solid var(--fondo-letra);
@@ -316,7 +323,7 @@ Pre-loader Style
 --------------------------------------------- 
 */
 
-        .js-preloader {
+.js-preloader {
     position: fixed;
     top: 0;
     left: 0;
@@ -1867,5 +1874,4 @@ body {
     .gaming-library .item ul li {
         width: 16%;
     }
-
 }

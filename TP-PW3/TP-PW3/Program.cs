@@ -1,15 +1,22 @@
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Web;
 using TP_PW3.Data;
 using TP_PW3.Models;
+using Blazored.LocalStorage;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
-builder.Services.AddServerSideBlazor();
+builder.Services.AddServerSideBlazor().AddCircuitOptions(options => { options.DetailedErrors = true; });
 builder.Services.AddDbContext<MyContext>();
 builder.Services.AddScoped<IGameService,GameService>();
+builder.Services.AddScoped<IUserServices, UserServices>();
+
+builder.Services.AddAuthorizationCore();
+builder.Services.AddScoped<System.Net.Http.HttpClient>();
+builder.Services.AddBlazoredLocalStorage();
 
 var app = builder.Build();
 
@@ -27,6 +34,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.MapControllers();
 app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");
 

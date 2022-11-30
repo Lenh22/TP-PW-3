@@ -2,96 +2,80 @@
 @page "/gameDetails/{id:int}"
 @inject IGameService GameService
 @inject NavigationManager NavigationManager
-@*
-<h1>Detalle del juego</h1>
+@inject ProtectedLocalStorage localStore
 
-<EditForm Model="@game">
-    <table class="table table-striped ">
-        <tr>
-            <td>Nombre: </td>
-            <td><input class="form-control col-sm-4" type="text" @bind="game.Nombre" /></td>
-        </tr>
-        <tr>
-            <td>Descripcion: </td>
-            <td><input class="form-control col-sm-4" type="text" @bind="game.Descripcion" /></td>
-        </tr>
-        <tr>
-            <td>Categoria</td>
-            <td>
-                <select class="form-control col-sm-4" @bind="game.Categoria">
-                    <option value="" selected>-Seleccione-</option>
-                    <option value="Accion">Acción</option>
-                    <option value="Terror">Terror</option>
-                    <option value="Online">Online</option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td>Precio: </td>
-            <td><input class="form-control col-sm-4" type="number" @bind="game.Precio" /></td>
-        </tr>
-        <tr>
-            <td colspan="2" style="text-align:center">
-                <input type="submit" value="Guardar" @onclick="SaveGame" />
-                <input type="button" value="Cancelar" @onclick="Cancel" />
-            </td>
-        </tr>
-    </table>
-</EditForm>*@
+@if (Token != "" && Message == "")
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="page-content mb-2">
+                    <!-- ***** Banner Inicio ***** -->
+                    <div class="">
+                        <div class="row">
+                            <!-- **** Form inicio **** -->
+                            <h1 class="mb-2">@mensaje</h1>
 
-<div class="container">
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="page-content mb-2">
-                <!-- ***** Banner Inicio ***** -->
-                <div class="">
-                    <div class="row">
-                        <!-- **** Form inicio **** -->
-                        <h1 class="mb-2">@mensaje</h1>
+                            <EditForm Model="@game">
 
-                        <EditForm Model="@game">
-
-                            <div class="form-outline mb-4">
-                                <input type="text" id="nombre" class="form-control" @bind="game.Nombre" />
-                                <label class="form-label" for="nombre">Nombre</label>
-                            </div>
-                            <div class="form-outline mb-4">
-                                <input type="text" id="descripcion" class="form-control" @bind="game.Descripcion" />
-                                <label class="form-label" for="descripcion">Descripcion</label>
-                            </div>
-                            <div class="form-outline mb-4">
-                                <select class="form-control" @bind="game.Categoria">
-                                    <option value="" selected>-Seleccione-</option>
-                                    <option value="Accion">Acción</option>
-                                    <option value="Terror">Terror</option>
-                                    <option value="Online">Online</option>
-                                </select>
-                                <label class="form-label" for="">Categoria</label>
-                            </div>
-                            <div class="form-outline mb-4">
-                                <input type="number" id="precio" class="form-control" @bind="game.Precio" />
-                                <label class="form-label" for="precio">Precio</label>
-                            </div>
-                            <!-- **** Botones inicio ****-->
-                            <div class="text-center d-flex justify-content-center mt-1" colspan="2">
-                                <div class="main-border-button m-2">
-                                    <input class="btn btn-dark" type="submit" value="Guardar" @onclick="SaveGame" />
+                                <div class="form-outline mb-4">
+                                    <input type="text" id="nombre" class="form-control" @bind="game.Nombre" />
+                                    <label class="form-label" for="nombre">Nombre</label>
                                 </div>
-                                <div class="main-border-button m-2">
-                                    <input class="btn btn-danger" type="button" value="Cancelar" @onclick="Cancel" />
+                                <div class="form-outline mb-4">
+                                    <input type="text" id="descripcion" class="form-control" @bind="game.Descripcion" />
+                                    <label class="form-label" for="descripcion">Descripcion</label>
                                 </div>
-                            </div>
-                            <!-- ****  Botones Fin **** -->
-                        </EditForm>
-                        <!-- **** Form Fin **** -->
+                                <div class="form-outline mb-4">
+                                    <select class="form-control" @bind="game.Categoria">
+                                        <option value="" selected>-Seleccione-</option>
+                                        <option value="Accion">Acción</option>
+                                        <option value="Terror">Terror</option>
+                                        <option value="Online">Online</option>
+                                    </select>
+                                    <label class="form-label" for="">Categoria</label>
+                                </div>
+                                <div class="form-outline mb-4">
+                                    <input type="number" id="precio" class="form-control" @bind="game.Precio" />
+                                    <label class="form-label" for="precio">Precio</label>
+                                </div>
+                                <!-- **** Botones inicio ****-->
+                                <div class="text-center d-flex justify-content-center mt-1" colspan="2">
+                                    <div class="main-border-button m-2">
+                                        <input class="btn btn-dark" type="submit" value="Guardar" @onclick="SaveGame" />
+                                    </div>
+                                    <div class="main-border-button m-2">
+                                        <input class="btn btn-danger" type="button" value="Cancelar" @onclick="Cancel" />
+                                    </div>
+                                </div>
+                                <!-- ****  Botones Fin **** -->
+                            </EditForm>
+                            <!-- **** Form Fin **** -->
+                        </div>
                     </div>
+                    <!-- ***** Banner Fin ***** -->
                 </div>
-                <!-- ***** Banner Fin ***** -->
             </div>
         </div>
     </div>
-</div>
-
+}
+else
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="page-content mb-2">
+                    <h3 class="text-center py-5">@Message</h3>
+                    <div class="nav-item px-3 text-center">
+                        <NavLink class="nav-link" href="Login">
+                            <button class="btn btn-outline-light btn-lg px-5">Login</button>
+                        </NavLink>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
 
 
 
@@ -103,6 +87,9 @@
     private Game game = new Game();
 
     public string mensaje { get; set; }
+    public string Message { get; set; } = "";
+    public string Token { get; set; } = "";
+    public DateTime DateToken { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
@@ -115,6 +102,7 @@
         {
             mensaje = "Agrega tu juego";
         }
+        await GetJWT();
     }
 
     protected async Task SaveGame()
@@ -126,5 +114,37 @@
     protected void Cancel()
     {
         NavigationManager.NavigateTo("/");
+    }
+
+    protected async Task<string> GetJWT()
+    {
+        try
+        {
+            var tokenStorage = await localStore.GetAsync<string>("token");
+            var fechaStorage = await localStore.GetAsync<DateTime>("fecha");
+
+            if (fechaStorage.Success)
+            {
+                DateToken = fechaStorage.Value;
+                if (DateTime.Compare(DateToken, DateTime.UtcNow) <= 0)
+                {
+                    await localStore.DeleteAsync("token");
+                    await localStore.DeleteAsync("fecha");
+                }
+            }
+            if (tokenStorage.Success)
+            {
+                Token = tokenStorage.Value;
+            }
+            else
+            {
+                Message = "No estás autorizado";
+            }
+        }
+        catch (Exception e)
+        {
+            Message = "No estás autorizado";
+        }
+        return Token;
     }
 }

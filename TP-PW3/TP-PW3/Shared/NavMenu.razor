@@ -1,4 +1,7 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
+﻿@inject NavigationManager uriHelper;
+
+@using System.Threading;
+<div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
         <!-- ***** Logo ***** -->
         <NavLink href="" Match="NavLinkMatch.All" class="logo">
@@ -26,6 +29,24 @@
                 <span class="oi oi-plus" aria-hidden="true"></span> Agrega
             </NavLink>
         </div>
+
+        @if (!(Token != "") && !(Message == ""))
+        {
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="Login">
+                    <span class="oi oi-account-login" aria-hidden="true"></span> Usuario
+                </NavLink>
+            </div>
+        }
+        else
+        {
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="Login">
+                    <span class="oi oi-account-logout" aria-hidden="true" onclick="@BorrarLocalStorage()"></span> Logout
+                </NavLink>
+            </div>
+        }
+
     </nav>
 </div>
 
@@ -34,8 +55,74 @@
 
     private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
 
+    public string Message { get; set; } = "";
+    public string Token { get; set; } = "";
+    public DateTime DateToken { get; set; }
+
     private void ToggleNavMenu()
     {
         collapseNavMenu = !collapseNavMenu;
     }
+
+    //protected override void OnAfterRender(bool firstRender)
+    //{
+    //    if (firstRender)
+    //    {
+    //        var timer = new Timer(new TimerCallback(_ =>
+    //        {
+    //            uriHelper.NavigateTo(uriHelper.Uri, forceLoad: true);
+    //        }));
+    //    }
+    //}
+
+    protected override async Task OnInitializedAsync()
+    {
+        await GetJWT();
+        //base.OnInitialized();
+
+        //await Task.Run(async () =>
+        //{
+        //        StateHasChanged();
+        //        await Task.Delay(1000);
+        //});
+    }
+
+    protected async Task<string> GetJWT()
+    {
+        try
+        {
+            var tokenStorage = await localStore.GetAsync<string>("token");
+            var fechaStorage = await localStore.GetAsync<DateTime>("fecha");
+
+            if (fechaStorage.Success)
+            {
+                DateToken = fechaStorage.Value;
+                if (DateTime.Compare(DateToken, DateTime.UtcNow) <= 0)
+                {
+                    await localStore.DeleteAsync("token");
+                    await localStore.DeleteAsync("fecha");
+                }
+            }
+            if (tokenStorage.Success)
+            {
+                Token = tokenStorage.Value;
+            }
+            else
+            {
+                Message = "No estás autorizado capo";
+            }
+        }
+        catch (Exception e)
+        {
+            Message = "No estás autorizado capo";
+        }
+        return Token;
+    }
+
+    protected async Task BorrarLocalStorage(){
+        await localStore.DeleteAsync("token");
+        await localStore.DeleteAsync("fecha");
+        //uriHelper.NavigateTo(uriHelper.Uri, forceLoad: true);
+    }
+
 }
